@@ -16,29 +16,17 @@ export class SignupComponent {
   constructor(private _store: Store<{ auth: AuthStateInterface }>) { }
   access = Access;
   file!: File;
-  role:string = this.access.JOB_SEEKER;
+  role:string = this.access.USER;
   isSubmitting = this._store.selectSignal(selectIsSubmitting);
   formInputs = {
-    firstName: {
-      id: 'firstName',
-      name: 'firstName',
+    name: {
+      id: 'fulName',
+      name: 'fullName',
       type: 'text',
       value: '',
-      placeholder: 'First Name',
-      label: 'First Name',
-      formControll: 'firstName',
-      onChange: "",
-      required: true,
-      error: ""
-    },
-    lastName: {
-      id: 'lastName',
-      name: 'lastName',
-      type: 'text',
-      value: '',
-      placeholder: 'Last Name',
-      label: 'Last Name',
-      formControll: 'lastName',
+      placeholder: 'Full Name',
+      label: 'Full Name',
+      formControll: 'fullName',
       onChange: "",
       required: true,
       error: ""
@@ -67,17 +55,27 @@ export class SignupComponent {
       required: true,
       error: ""
     },
-    confirmationPassword: {
-      id: 'confirmationPassword',
-      name: 'Confirmation Password',
-      type: 'password',
+    phone: {
+      id: 'phone',
+      name: 'phone',
+      type: 'tele',
       value: '',
-      placeholder: 'Confirmation Password',
-      label: 'Confirmation Password',
-      formControll: 'confirmationPassword',
+      placeholder: 'Phone Number',
+      label: 'Phone Number',
+      formControll: 'phone',
       onChange: "",
-      required: true,
-      error: ""
+      required: true
+    },
+    address: {
+      id: 'address',
+      name: 'address',
+      type: 'text',
+      value: '',
+      placeholder: 'Address',
+      label: 'Address',
+      formControll: 'address',
+      onChange: "",
+      required: true
     },
     file: {
       id: 'file',
@@ -98,14 +96,14 @@ export class SignupComponent {
 
   signUp = () => {
     const registerRequest: RegisterRequestInterface = {
-      firstName: this.formInputs.firstName.value,
-      lastName: this.formInputs.lastName.value,
+      fullName: this.formInputs.name.value,
+      address: this.formInputs.address.value,
       email: this.formInputs.email.value,
       password: this.formInputs.password.value,
-      confirmationPassword: this.formInputs.confirmationPassword.value,
+      phoneNumber: this.formInputs.phone.value,
       role: this.role
     };
-    // if (registerRequest.role === this.access.RECRUITER) registerRequest.image = this.file;
+    if (registerRequest.role === this.access.RECRUITER) registerRequest.image = this.file;
     this._store.dispatch(authPageActions.register(registerRequest))
   }
 }

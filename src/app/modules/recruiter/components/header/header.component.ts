@@ -8,7 +8,7 @@ import { AuthService } from '@app/shared/services/auth/auth.service';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent {
-  logo: string = "../../../../../assets/img/logo2.png"
+  logo: string = "../../../../../assets/img/logo.png"
 
   constructor(private _authService: AuthService, private _router: Router) {}
 

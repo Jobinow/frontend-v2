@@ -91,7 +91,7 @@ export class CreateJobComponent {
       this.formInputs.educLevel.value,
       parseInt(this.formInputs.salary.value),
       OfferStatus.PENDING,
-      JSON.parse((localStorage.getItem("recruiter") as string)),
+      JSON.parse((localStorage.getItem("access") as string)).user.email,
       []
       );
 

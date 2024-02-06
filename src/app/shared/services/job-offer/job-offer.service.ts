@@ -5,27 +5,21 @@ import { environment } from 'environments/environment.development';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class JobOfferService {
-  constructor(private _http: HttpClient) {}
 
-  public readAll(page: number = 0, size: number = 8): Observable<JobOffer[]> {
-    return this._http.get<JobOffer[]>(
-      `${environment.API_URL}/offer/paged?page=${
-        page != 0 ? page - 1 : page
-      }&size=${size}`
-    );
+  constructor(private _http: HttpClient) { }
+
+  public readAll(page: number = 0, size: number = 4): Observable<JobOffer[]> {
+    return this._http.get<JobOffer[]>(`${environment.API_URL}/joboffers?page=${page != 0 ? page - 1 : page}&size=${size}`);
   }
 
   public readOne(id: string): Observable<JobOffer> {
-    return this._http.get<JobOffer>(`${environment.API_URL}/offer/${id}`);
+    return this._http.get<JobOffer>(`${environment.API_URL}/joboffers/${id}`);
   }
 
   public create(body: JobOffer): Observable<JobOffer> {
-    return this._http.post<JobOffer>(
-      `${environment.API_URL}/joboffers/create`,
-      body
-    );
+    return this._http.post<JobOffer>(`${environment.API_URL}/joboffers/create`, body);
   }
 }

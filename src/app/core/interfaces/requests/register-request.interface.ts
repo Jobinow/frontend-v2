@@ -1,11 +1,9 @@
 export interface RegisterRequestInterface {
-    firstName: string,
-    lastName: string,
+    fullName: string,
     email: string,
     password: string,
-    confirmationPassword: string,
+    phoneNumber: string,
+    address: string,
+    image?: File,
     role: string
-    // phoneNumber: string,
-    // address: string,
-    // image?: File,
 }

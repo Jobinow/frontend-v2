@@ -7,5 +7,5 @@ import { JobOffer } from '@app/core/models/job-offer';
   styleUrls: ['./job-preview-card.component.less']
 })
 export class JobPreviewCardComponent {
-  @Input() offer:JobOffer|any;
+  @Input() offer:any;
 }

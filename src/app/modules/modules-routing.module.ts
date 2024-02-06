@@ -16,6 +16,7 @@ import { authenticationGuard, authorizationGuard } from "@core/guards";
 import { NotAuthorizedPageComponent } from "./errors/pages/not-authorized-page/not-authorized-page.component";
 import { NotFoundComponent } from "@modules/errors/pages/not-found/not-found.component";
 import { PlansComponent } from "./plans/pages/plans/plans.component";
+import { enableDebugTools } from "@angular/platform-browser";
 import { CheckoutComponent } from "./plans/pages/checkout/checkout.component";
 import { VerifyAccountComponent } from "./auth/pages/verify-account/verify-account.component";
 

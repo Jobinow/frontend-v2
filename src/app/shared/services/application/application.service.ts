@@ -19,4 +19,6 @@ export class ApplicationService {
     }
     return this._http.post<Application>(`${environment.API_URL}/applications/create`, body);
   }
+
+  
 }

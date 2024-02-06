@@ -9,7 +9,6 @@ import { PersistanceService } from "@app/shared/services/persistance.service";
 import { AuthResponse } from "@app/core/interfaces/responses/auth-response.interface";
 import { Router } from "@angular/router";
 import { Access } from "@app/core/enums/access";
-import { Tokens } from "@app/core/interfaces/responses/tokens.interface";
 
 /**
  * Register Effect
@@ -32,15 +31,8 @@ export const registerEffect = createEffect((
         ofType(authPageActions.register),
         concatMap(action => 
             authService.register(action).pipe(
-                map((tokens: Tokens) => {
-                    persistanceService.set("access", tokens);
-                    const user: AuthResponse = {
-                        email: "",
-                        role: "",
-                        token: tokens.access_token,
-                        username: "",
-                        verified: true
-                    }
+                map((user: AuthResponse) => {
+                    persistanceService.set("access", user);
                     return authApiActions.registerSuccess(user)
                 }),
                 catchError((errorResponse: HttpErrorResponse) => {
@@ -79,17 +71,9 @@ export const loginEffect = createEffect((
         ofType(authPageActions.login),
         concatMap(action => 
             authService.login(action).pipe(
-                map((tokens: Tokens) => {
-                    console.log(tokens)
-                    persistanceService.set("access", tokens);
-                    const authUser: AuthResponse = {
-                        email: "",
-                        role: "",
-                        token: tokens.access_token,
-                        username: "",
-                        verified: true
-                    }
-                    return authApiActions.loginSuccess(authUser);
+                map((user: AuthResponse) => {
+                    persistanceService.set("access", user);
+                    return authApiActions.loginSuccess(user);
                 }),
                 catchError((errorResponse) => {
                     return of(
