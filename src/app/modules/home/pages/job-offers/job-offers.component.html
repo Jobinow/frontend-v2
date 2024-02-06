@@ -1,0 +1,28 @@
+<div class="job__offers">
+    <div class="job__offers__container container mx-auto">
+        <div class="job__offers__wrapper relative px-8">
+            <div class="job_offers__filters">
+                <div class="job__offers__search__bar mx-auto md:flex items-start justify-between">
+                    <app-job-offers-search></app-job-offers-search>
+                    <app-job-offers-filters></app-job-offers-filters>
+                </div>
+            </div>
+            <div class="job__offers__cards__preview flex items-start gap-5 w-full">
+                <div class="job__offers__cards w-full md:w-1/2">
+                    <div class="space-x-2 space-y-3" *ngIf="jobOffers">
+                        <app-job-offer-card *ngFor="let offer of jobOffers()" [offer]="offer"></app-job-offer-card>
+                        <div class="pagination flex flex-col items-center">
+                            <app-pagination url="/job-offers" [paginationInfo]="jobOffersPagination()"></app-pagination>
+                        </div>
+                    </div>
+                    <div *ngIf="!jobOffers">
+                        No Offers available
+                    </div>
+                </div>
+                <div class="job__offers__card__preview hidden md:block sticky top-10 w-1/2">
+                    <app-job-preview-card *ngIf="jobOffer()" [offer]="jobOffer()"></app-job-preview-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

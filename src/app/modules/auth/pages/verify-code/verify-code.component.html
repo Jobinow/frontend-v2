@@ -1,0 +1,18 @@
+<div class="verify__page">
+    <div class="verify__page__container">
+        <div class="verify__page__wrapper flex flex-col gap-6 border border-[#d4d2d0] rounded-lg bg-white p-6">
+            <div class="verify__info">
+                <h1 class="mb-2 text-xl text-[#2D2D2D] font-bold">Please Verify Your Account.</h1>
+                <span class="text-base text-[#595959]">you will recieve a verification Link via email.</span>
+                <p>{{message}}</p>
+            </div>
+            <div class="verify__inputs flex flex-col gap-6">
+                <div class="submit__btn">
+                    <app-button [disabled]="!currentUser?.verified" [clickEvent]="submitForm">
+                        Continue <i class='bx bx-right-arrow-alt text-lg'></i>
+                    </app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

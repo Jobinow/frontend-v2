@@ -1,0 +1,25 @@
+<div class="plan__crad w-80">
+    <div [class]="pack.recommended ? 'border-[#2557a7]' : 'border-[#d4d2d0]'" class="plan__card__container border-2 rounded-lg">
+        <div *ngIf="pack.recommended" class="plan__recommended_wrapper py-2 px-4 text-center bg-[#2557a7] text-white">
+            <h1 class="uppercase">recommended</h1>
+        </div>
+        <div class="plan_card__wrapper py-2 px-4">
+            <div class="card__wrapper">
+                <div class="card__header border-b-2 py-2">
+                    <h1 class="uppercase font-medium">{{ pack.name }}</h1>
+                </div>
+                <div class="card__body py-5">
+                    <ul class="plan__info">
+                        <li class="plan__item">{{ pack.description }}</li>
+                    </ul>
+                    <div class="price mt-4 text-2xl font-bold">
+                        {{ pack.price === 0 ? "FREE" : pack.price + " MAD" }}
+                    </div>
+                </div>
+                <div class="card__footer border-t-2 py-4">
+                    <app-button [clickEvent]="selectPack">Get Started</app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="plans__page h-dvh">
+    <div class="plans__page__container h-full">
+        <div class="plans__page__wrapper h-full flex items-center justify-center">
+            <main>
+                <div class="plans__page__heading p-4 flex items-center justify-center">
+                    <h1 class="py-2 text-2xl font-bold border-b-4 border-[#2557a7]">Our Plans</h1>
+                </div>
+                <div class="plans grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 items-center">
+                    <app-plan-card *ngFor="let pack of packs()" [pack]="pack"></app-plan-card>
+                </div>
+            </main>
+        </div>
+    </div>
+</div>

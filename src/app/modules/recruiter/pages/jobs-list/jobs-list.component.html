@@ -1,0 +1,17 @@
+<div class="sm:flex sm:items-center">
+    <div class="sm:flex-auto">
+        <h1 class="text-xl font-semibold text-gray-900">Jobs</h1>
+        <p class="mt-2 text-sm text-gray-700">A list of all the Jobs Posted.</p>
+    </div>
+    <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+        <a routerLink="/recruiter/jobs/create-job">
+            <app-button>Add New Job</app-button>
+        </a>
+    </div>
+</div>
+<div class="job-offers space-y-2">
+    <app-table [columns]="tableColumns" [data]="jobOffers()"></app-table>
+    <div class="pagination flex flex-col items-end">
+        <app-pagination url="/recruiter/jobs" [paginationInfo]="jobOffersPagination()"></app-pagination>
+    </div>
+</div>

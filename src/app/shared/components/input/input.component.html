@@ -1,0 +1,11 @@
+<div class="input_c">
+    <div class="input__c__container container">
+        <div class="input__c__wrapper flex flex-col items-start">
+            <label [for]="input.id" class="mb-1 text-base font-bold">{{input.label}} <span class="text-red-700" *ngIf="input.required">*</span></label>
+            <div class="input__wrapper relative w-full has-[:focus]:outline has-[:focus]:outline-0 has-[:focus]:before:content-[''] has-[:focus]:before:absolute has-[:focus]:before:top-0 has-[:focus]:before:left-0 has-[:focus]:before:w-full has-[:focus]:before:h-full has-[:focus]:before:rounded-lg has-[:focus]:before:shadow-[inset_0_-3px_0_0_#2557a7] has-[:focus]:outline-[#2557a7] duration-100 ease-linear rounded-lg">
+                <input [(ngModel)]="input.value" [type]="input.type" [name]="input.name" [id]="input.id" [value]="input.type != 'file' ? input.value : ''" [placeholder]="input.placeholder" (change)="input.type == 'file' ? fileUploadOnChange($event) : ''" class="w-full px-3 py-2 border border-[#767676] text-base focus:outline-none rounded-lg" [required]="input.required">
+            </div>
+        </div>
+        <p *ngIf="input.error" class="pl-2 pt-1 text-red-500 text-xs font-medium">{{ input.error }}</p>
+    </div>
+</div>

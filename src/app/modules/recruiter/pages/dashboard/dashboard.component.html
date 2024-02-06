@@ -1,0 +1,35 @@
+<div class="dashboard__page">
+    <div class="dashboard__page__container container w-full mx-auto">
+        <div class="dashboard__page__wrapper flex items-start w-full">
+            <div [class]="isSideBarActive ? 'w-1/4' : 'w-20'" class="dashboard__side__bar relative h-screen bg-black duration-100 ease-linear">
+                <div (click)="setSideBarActive()" class="sidebar__open__close__btn absolute bottom-5 -right-10 p-3 border border-white bg-black text-white rounded-full cursor-pointer">>></div>
+                <div class="sidebar__inner__warpper py-5 px-4">
+                    <ul class="sidebar_items space-y-4">
+                        <li class="sidebar__item">
+                            <a routerLink="/recruiter/jobs" routerLinkActive="bg-[#767676]" [class]="isSideBarActive ? '' : 'justify-center'" class="flex items-center gap-3 py-2 px-4 text-white rounded-lg">
+                                <div class="icon text-2xl">
+                                    <i class='bx bxs-briefcase'></i>
+                                </div>
+                                <p [class]="isSideBarActive ? '' : 'hidden'" class="text-lg">Jobs</p>
+                            </a>
+                        </li>
+                        <li class="sidebar__item">
+                            <a routerLink="/recruiter/applications" routerLinkActive="bg-[#767676]" [class]="isSideBarActive ? '' : 'justify-center'" class="flex items-center gap-3 py-2 px-4 text-white rounded-lg">
+                                <div class="icon text-2xl">
+                                    <i class='bx bxs-group'></i>
+                                </div>
+                                <p [class]="isSideBarActive ? '' : 'hidden'" class="text-lg">Candidates</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="main__content w-full">
+                <app-header class="w-full"></app-header>
+                <div class="dashboard__page__inner__wrapper px-8 py-8">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

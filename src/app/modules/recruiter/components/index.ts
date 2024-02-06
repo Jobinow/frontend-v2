@@ -1,0 +1,1 @@
+export * from "@modules/recruiter/components/header/header.component";

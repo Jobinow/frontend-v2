@@ -1,0 +1,38 @@
+<div class="signup__page">
+    <div class="signup__page__container">
+        <div class="signup__page__wrapper flex flex-col gap-6 border rounded-lg bg-white p-6">
+            <div class="signup__info">
+                <h1 class="mb-2 text-xl text-[#2D2D2D] font-bold capitalize">submit new application</h1>
+                <span class="text-base text-[#595959]">Please make sure you fill all required fields.</span>
+                <p [class]="message && message.status === 'ok' ? 'text-green-600' : 'text-red-600'">{{message && message.message}}</p>
+            </div>
+            <div class="signup__inputs">
+                <form class="grid grid-cols-2 gap-6">
+                    <app-input [input]="formInputs.name"></app-input>
+                    <app-input [input]="formInputs.email"></app-input>
+                    <app-input [input]="formInputs.phone"></app-input>
+                    <app-input [input]="formInputs.identity"></app-input>
+                    <div class="input__c__wrapper flex flex-col items-start col-span-2">
+                        <label [for]="formInputs.motivationLetter.id" class="mb-1 text-base font-bold">{{formInputs.motivationLetter.label}} <span
+                                class="text-red-700" *ngIf="formInputs.motivationLetter.required">*</span></label>
+                        <div
+                            class="input__wrapper relative w-full has-[:focus]:outline has-[:focus]:outline-0 has-[:focus]:before:content-[''] has-[:focus]:before:absolute has-[:focus]:before:top-0 has-[:focus]:before:left-0 has-[:focus]:before:w-full has-[:focus]:before:h-full has-[:focus]:before:rounded-lg has-[:focus]:before:shadow-[inset_0_-3px_0_0_#2557a7] has-[:focus]:outline-[#2557a7] duration-100 ease-linear rounded-lg">
+                            <textarea [(ngModel)]="formInputs.motivationLetter.value" [name]="formInputs.motivationLetter.name"
+                                [id]="formInputs.motivationLetter.id"
+                                [value]="formInputs.motivationLetter.type != 'file' ? formInputs.motivationLetter.value : ''"
+                                [placeholder]="formInputs.motivationLetter.placeholder"
+                                class="w-full px-3 py-2 border border-[#767676] text-base focus:outline-none rounded-lg"
+                                [required]="formInputs.motivationLetter.required"></textarea>
+                        </div>
+                    </div>
+                    <app-input [input]="formInputs.resume" (changeEvent)="uploadFile($event)" class="col-span-2"></app-input>
+                    <div class="submit__btn col-span-2">
+                        <app-button [clickEvent]="apply">
+                            Confirm Application <i class='bx bx-right-arrow-alt text-lg'></i>
+                        </app-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="signup__page">
+  <div class="signup__page__container">
+    <div
+      class="signup__page__wrapper flex flex-col gap-6 border border-[#d4d2d0] rounded-lg bg-white p-6"
+    >
+      <div class="signup__info">
+        <h1 class="mb-2 text-xl text-[#2D2D2D] font-bold">
+          Ready to take the next step?
+        </h1>
+        <span class="text-base text-[#595959]"
+          >Create an account or sign in.</span
+        >
+        <p>{{ isSubmitting() }}</p>
+      </div>
+      <div class="signup__inputs">
+        <form class="grid grid-cols-2 gap-6">
+          <app-input [input]="formInputs.firstName"></app-input>
+          <app-input [input]="formInputs.lastName"></app-input>
+          <app-input [input]="formInputs.email"></app-input>
+          <app-input [input]="formInputs.password"></app-input>
+          <app-input [input]="formInputs.confirmationPassword"></app-input>
+          <app-input
+            *ngIf="role === access.RECRUITER"
+            [input]="formInputs.file"
+            (changeEvent)="uploadFile($event)"
+          ></app-input>
+          <div class="role col-span-2">
+            <p class="mb-1 text-base font-bold">
+              Role<span class="text-red-700">*</span>
+            </p>
+            <div class="role-form-controls grid grid-cols-2 gap-6">
+              <label
+                for="user"
+                class="radio-input flex items-center justify-center p-4 border-2 text-sm text-slate-400 font-medium rounded has-[:checked]:border-[#2557a7] has-[:checked]:text-[#2557a7] duration-100 ease-linear cursor-pointer"
+              >
+                <span>Job Seeker</span>
+                <input
+                  type="radio"
+                  name="role"
+                  id="user"
+                  [(ngModel)]="role"
+                  [value]="access.JOB_SEEKER"
+                  class="appearance-none"
+                  [checked]="role === access.JOB_SEEKER"
+                />
+              </label>
+              <label
+                for="recruiter"
+                class="radio-input flex items-center justify-center p-4 border-2 text-sm text-slate-400 font-medium rounded has-[:checked]:border-[#2557a7] has-[:checked]:text-[#2557a7] duration-100 ease-linear cursor-pointer"
+              >
+                <span>Recruiter</span>
+                <input
+                  type="radio"
+                  name="role"
+                  id="recruiter"
+                  [(ngModel)]="role"
+                  [value]="access.RECRUITER"
+                  class="appearance-none"
+                  [checked]="role === access.RECRUITER"
+                />
+              </label>
+            </div>
+          </div>
+          <div class="submit__btn col-span-2">
+            <app-button [clickEvent]="signUp">
+              Continue <i class="bx bx-right-arrow-alt text-lg"></i>
+            </app-button>
+          </div>
+          <div class="form__footer">
+            <p>
+              Already have an account?
+              <a
+                routerLink="/auth/login"
+                class="capitalize text-[#2557a7] font-medium border-b border-dotted border-[#2557a7]"
+                >Log in</a
+              >
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

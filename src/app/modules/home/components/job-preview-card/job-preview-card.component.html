@@ -1,0 +1,55 @@
+<div class="job__preview__card border-2 border-[#d4d2d0] rounded-lg overflow-y-hidden">
+    <div class="job__preview__card__container container mx-auto">
+        <div class="job__preview__card__wrapper">
+            <div class="job__preview__card__header p-4 border-b-2 border-[#00000014] shadow-[0_2px_4px_#00000014] space-y-8">
+                <div class="job__card__info space-y-1">
+                    <div class="job__title">
+                        <h1 class="text-lg font-bold capitalize">{{offer.profile}}</h1>
+                    </div>
+                    <div class="job_name__location space-y-1">
+                        <div class="company__name">
+                            <a href="#" class="w-fit text-sm text-[#2557a7] border-b border-[#2557a7] capitalize">{{offer.recruiter.fullName}}</a>
+                        </div>
+                        <div class="company__location">
+                            <p class="text-sm text-[#767676] capitalize">{{offer.address}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job__card__ctas flex items-center gap-4 mt-4">
+                    <div class="job__card__apply__btn">
+                        <a [routerLink]="'/job-offers/' + offer.id + '/apply'">
+                            <app-button>apply now</app-button>
+                        </a>
+                    </div>
+                    <div class="job__card__apply__save">
+                        <button class="py-1 px-2 bg-[#e4e2e0] border border-[#e4e2e0] text-2xl rounded-lg" title="Save Job">
+                            <i class='bx bx-bookmark'></i>
+                        </button>
+                    </div>
+                    <div class="job__card__apply__remove hidden">
+                        <button>remove</button>
+                    </div>
+                </div>
+            </div>
+            <div [class]="offer.description.length < 2000 ? 'h-fit' : 'h-svh'" class="job__preview__card__body overflow-y-auto">
+                <div class="job__details">
+                    <div class="job__type p-4 border-b border-[#e4e2e0] space-y-3">
+                        <h2 class="flex items-center gap-3 text-base text-[#2D2D2D] font-bold">
+                            <i class='bx bxs-briefcase text-lg'></i>
+                            <span>Job type</span>
+                        </h2>
+                        <div class="job__preview__card__type w-fit py-1 px-2 bg-[#e4f7e6] rounded-md">
+                            <p class="text-xs text-[#1f662c] font-bold capitalize">full time</p>
+                        </div>
+                    </div>
+                    <div class="job__description p-4 pb-5">
+                        <p class="text-sm text-[#2D2D2D]">
+                            {{offer.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="job__preview__card__footer"></div>
+        </div>
+    </div>
+</div>

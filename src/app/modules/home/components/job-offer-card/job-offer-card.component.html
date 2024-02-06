@@ -1,0 +1,38 @@
+<div class="job__offer__card border-2 border-[#d4d2d0] rounded-lg cursor-pointer" (click)="selectJobOffer()">
+    <div class="job__offer__card__container container">
+        <div class="job__offer__card__wrapper space-y-3 p-4">
+            <div class="job__offer__card__header flex items-center justify-between">
+                <div class="job__offer__card__status py-0.5 px-2 bg-[#fceef4] rounded-md">
+                    <p class="text-[#9d2b6b] text-xs font-medium">Urgently Hiring</p>
+                </div>
+                <div class="job__offer__card__menu"></div>
+            </div>
+            <div class="job__offer__card__body space-y-2">
+                <div class="job__offer__card__title">
+                    <h1 class="text-lg text-[#2D2D2D] font-semibold">{{offer.title}}</h1>
+                </div>
+                <div class="job__offer__card__info space-y-2">
+                    <div class="job__offer__card__company">
+                        <p class="text-[#2D2D2D] text-base capitalize">{{offer.recruiter.fullName}}</p>
+                    </div>
+                    <div class="job__offer__card__city">
+                        <p class="text-[#2D2D2D] text-base capitalize">{{offer.recruiter.address}}</p>
+                    </div>
+                    <div class="job__offer__card__type w-fit py-1 px-2 bg-[#e4f7e6] rounded-md">
+                        <p class="text-sm text-[#1f662c] font-bold capitalize">full time</p>
+                    </div>
+                </div>
+                <div class="job__offer__card__description">
+                    <p class="text-sm text-[#6F6F6F] truncate">
+                        {{offer.description}}
+                    </p>
+                </div>
+            </div>
+            <div class="job__offer__card__footer">
+                <div class="job__offer__card__date">
+                    <!-- <p class="text-xs text-[#6f6f6f] capitalize">today</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
